@@ -10,21 +10,27 @@ import Divider from '@material-ui/core/Divider';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import Mail from '../components/mail'
 import MailList from  '../components/mailList'
 import MailboxeList from  '../components/mailboxeList'
+import LogoutButton from '../components/logout'
 
 const mails = [
 				{
 					from:"thomas",
 					subject:"yo la forme",
-					attached:"attached"
+					attached:"attached",
+					core:"Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In",
 				},
 				{
 					from:"Hélène",
 					subject:"yo la patate",
-					attached:"attached"
+					attached:"attached",
+					core:"Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In",
+
 				},
 ]
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -69,9 +75,7 @@ export default function PermanentDrawerLeft() {
           <Typography variant="h6" noWrap className={classes.title}>
            welcome on Pami's interface 
           </Typography>
-	  	<Button color="inherit">
-			log out
-	  	</Button>
+	  	<LogoutButton />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -95,17 +99,7 @@ export default function PermanentDrawerLeft() {
       <main className={classes.content}>
         <div className={classes.toolbar} />
       	<MailList mails={mails}/> 	
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
-          facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
-          tincidunt. Ornare suspendisse sed nisi lacus sed viverra tellus. Purus sit amet volutpat
-          consequat mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-          vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra accumsan in. In
-          hendrerit gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem et
-          tortor. Habitant morbi tristique senectus et. Adipiscing elit duis tristique sollicitudin
-          nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
-          accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+		<Mail mail={mails[0]}/>
       </main>
     </div>
   );
