@@ -5,15 +5,26 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import MailList from  '../components/mailList'
+import MailboxeList from  '../components/mailboxeList'
+
+const mails = [
+				{
+					from:"thomas",
+					subject:"yo la forme",
+					attached:"attached"
+				},
+				{
+					from:"Hélène",
+					subject:"yo la patate",
+					attached:"attached"
+				},
+]
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -77,55 +88,13 @@ export default function PermanentDrawerLeft() {
 	  		</Typography>
 	  	</div>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+	  	<MailboxeList mailboxes={['Inbox', 'Starred', 'Send email', 'Drafts']}/>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+	  	<MailboxeList mailboxes={['All mail', 'Trash', 'Spam']}/>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-       	<List>
-	  		<ListItem button key="mail">
-	  			<ListItemText primary="subject"/>
-	  			<ListItemText primary="from"/>
-	  			<ListItemText primary="attached"/>
-	  		</ListItem>
-	  	</List>
-		<List>
-	  		<ListItem button key="mail">
-	  			<ListItemText primary="subject"/>
-	  			<ListItemText primary="from"/>
-	  			<ListItemText primary="attached"/>
-	  		</ListItem>
-	  	</List>
-		<List>
-	  		<ListItem button key="mail">
-	  			<ListItemText primary="subject"/>
-	  			<ListItemText primary="from"/>
-	  			<ListItemText primary="attached"/>
-	  		</ListItem>
-	  	</List>
-		<List>
-	  		<ListItem button key="mail">
-	  			<ListItemText primary="subject"/>
-	  			<ListItemText primary="from"/>
-	  			<ListItemText primary="attached"/>
-	  		</ListItem>
-	  	</List>
-
+      	<MailList mails={mails}/> 	
         <Typography paragraph>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper eget nulla
           facilisi etiam dignissim diam. Pulvinar elementum integer enim neque volutpat ac
